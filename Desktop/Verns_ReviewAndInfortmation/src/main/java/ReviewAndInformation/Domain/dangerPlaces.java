@@ -27,8 +27,26 @@ public class dangerPlaces implements Serializable {
             this.avoidedPlaces = avoidedPlaces;
         }
 
+        public Builder copy(dangerPlaces value)
+        {
+            this.avoidedPlaces = value.getAvoidedPlaces();
+            return this;
+        }
 
         public dangerPlaces build() {return new dangerPlaces(this);}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        dangerPlaces that = (dangerPlaces) o;
+
+        if (avoidedPlaces != null ? !avoidedPlaces.equals(that.avoidedPlaces) : that.avoidedPlaces != null)
+            return false;
+
+        return true;
     }
 
     @Override

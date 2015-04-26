@@ -27,8 +27,25 @@ public class GoToPlaces implements Serializable {
             this.cityToVisit = cityToVisit;
         }
 
+        public Builder copy(GoToPlaces value)
+        {
+            this.cityToVisit = value.getCityToVisit();
+            return this;
+        }
 
         public GoToPlaces build() {return new GoToPlaces(this);}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GoToPlaces that = (GoToPlaces) o;
+
+        if (cityToVisit != null ? !cityToVisit.equals(that.cityToVisit) : that.cityToVisit != null) return false;
+
+        return true;
     }
 
     @Override

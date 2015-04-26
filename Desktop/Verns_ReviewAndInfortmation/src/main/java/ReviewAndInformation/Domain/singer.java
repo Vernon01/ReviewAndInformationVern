@@ -27,8 +27,25 @@ public class singer implements Serializable {
             this.singing = singing;
         }
 
+        public Builder copy(singer value)
+        {
+            this.singing = value.getSinging();
+            return this;
+        }
 
         public singer build() {return new singer(this);}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        singer singer = (singer) o;
+
+        if (singing != null ? !singing.equals(singer.singing) : singer.singing != null) return false;
+
+        return true;
     }
 
     @Override

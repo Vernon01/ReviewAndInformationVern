@@ -27,8 +27,25 @@ public class musicType implements Serializable {
             this.rock = rock;
         }
 
+        public Builder copy(musicType value)
+        {
+            this.rock = value.getRock();
+            return this;
+        }
 
         public musicType build() {return new musicType(this);}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        musicType musicType = (musicType) o;
+
+        if (rock != null ? !rock.equals(musicType.rock) : musicType.rock != null) return false;
+
+        return true;
     }
 
     @Override

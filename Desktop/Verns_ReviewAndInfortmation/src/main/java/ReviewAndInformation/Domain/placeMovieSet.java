@@ -27,8 +27,27 @@ public class placeMovieSet implements Serializable {
             this.cityDirectedIn = cityDirectedIn;
         }
 
+        public Builder copy(placeMovieSet value)
+        {
+            this.cityDirectedIn = value.getCityDirectedIn();
+            return this;
+        }
 
         public placeMovieSet build() {return new placeMovieSet(this);}
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        placeMovieSet that = (placeMovieSet) o;
+
+        if (cityDirectedIn != null ? !cityDirectedIn.equals(that.cityDirectedIn) : that.cityDirectedIn != null)
+            return false;
+
+        return true;
     }
 
     @Override

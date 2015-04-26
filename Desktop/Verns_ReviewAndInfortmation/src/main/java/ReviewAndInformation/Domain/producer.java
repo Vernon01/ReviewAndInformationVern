@@ -44,7 +44,29 @@ public class producer implements Serializable{
             return this;
         }
 
+        public Builder copy(producer value)
+        {
+            this.name = value.getName();
+            this.age = value.getAge();
+            this.yearsProducing = value.getYearsProducing();
+            return this;
+        }
+
         public producer build() {return new producer(this);}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        producer producer = (producer) o;
+
+        if (age != producer.age) return false;
+        if (yearsProducing != producer.yearsProducing) return false;
+        if (name != null ? !name.equals(producer.name) : producer.name != null) return false;
+
+        return true;
     }
 
     @Override

@@ -45,7 +45,29 @@ public class movie implements Serializable {
             return this;
         }
 
+        public Builder copy(movie value)
+        {
+            this.name = value.getName();
+            this.length = value.getLength();
+            this.category = value.getCategory();
+            return this;
+        }
+
         public movie build() {return new movie(this);}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        movie movie = (movie) o;
+
+        if (length != movie.length) return false;
+        if (category != null ? !category.equals(movie.category) : movie.category != null) return false;
+        if (name != null ? !name.equals(movie.name) : movie.name != null) return false;
+
+        return true;
     }
 
     @Override
