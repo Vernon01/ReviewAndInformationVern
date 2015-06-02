@@ -26,5 +26,8 @@
         <module name="Verns_ReviewAndInfortmation" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Verns_ReviewAndInfortmation" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

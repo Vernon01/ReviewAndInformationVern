@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class movieFactory {
 
-    public static movie createMovie(int name, Map<String,String> values)
+    public static movie createMovie(int length, Map<String,String> values)
     {
         movie mv = new movie
                 .Builder(values.get("name"))

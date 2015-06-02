@@ -1,11 +1,20 @@
 package ReviewAndInformation.Domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * Created by student on 2015/04/18.
  */
+@Entity
 public class producer implements Serializable{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String name;
     private int age;
     private int yearsProducing;
@@ -18,17 +27,20 @@ public class producer implements Serializable{
         name = builder.name;
         age = builder.age;
         yearsProducing = builder.yearsProducing;
+        id = builder.id;
     }
 
     public String getName() {return name;}
     public int getAge() {return age;}
     public int getYearsProducing() {return yearsProducing;}
+    public Integer getId() {return id;}
 
     public static class Builder {
 
         private String name;
         private int age;
         private int yearsProducing;
+        private Integer id;
 
         public Builder(String name) {
             this.name = name;
@@ -44,11 +56,18 @@ public class producer implements Serializable{
             return this;
         }
 
+        public Builder id (Integer value)
+        {
+            this.id = value;
+            return this;
+        }
+
         public Builder copy(producer value)
         {
             this.name = value.getName();
             this.age = value.getAge();
             this.yearsProducing = value.getYearsProducing();
+            this.id = value.getId();
             return this;
         }
 
@@ -58,12 +77,13 @@ public class producer implements Serializable{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof producer)) return false;
 
         producer producer = (producer) o;
 
         if (age != producer.age) return false;
         if (yearsProducing != producer.yearsProducing) return false;
+        if (id != null ? !id.equals(producer.id) : producer.id != null) return false;
         if (name != null ? !name.equals(producer.name) : producer.name != null) return false;
 
         return true;
@@ -76,6 +96,7 @@ public class producer implements Serializable{
     public String toString() {
         return "Movie{" +
                 "name=" + name +
+                "id=" + id +
                 ", yearsProducing='" + yearsProducing + '\'' +
                 '}';
     }
